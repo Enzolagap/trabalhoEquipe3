@@ -1,0 +1,14 @@
+{
+    "name": "enzoc/projeto-equipe3",
+    "autoload": {
+        "psr-4": {
+            "": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "enzo"
+        }
+    ],
+    "require": {}
+}
