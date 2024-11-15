@@ -1,13 +1,13 @@
 {
-    "name": "enzoc/projeto-equipe3",
+    "name": "kaique/composer",
     "autoload": {
         "psr-4": {
-            "": "src/"
+            "":"src/"
         }
     },
     "authors": [
         {
-            "name": "enzo"
+            "name": "kaique"
         }
     ],
     "require": {}

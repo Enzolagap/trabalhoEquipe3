@@ -1,6 +1,6 @@
 <?php return array(
     'root' => array(
-        'name' => 'enzoc/projeto-equipe3',
+        'name' => 'kaique/composer',
         'pretty_version' => '1.0.0+no-version-set',
         'version' => '1.0.0.0',
         'reference' => null,
@@ -10,7 +10,7 @@
         'dev' => true,
     ),
     'versions' => array(
-        'enzoc/projeto-equipe3' => array(
+        'kaique/composer' => array(
             'pretty_version' => '1.0.0+no-version-set',
             'version' => '1.0.0.0',
             'reference' => null,
