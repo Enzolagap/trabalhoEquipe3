@@ -62,23 +62,38 @@ function getCardColor($coletor) {
 </head>
 <body>
 
-<div class="container">
+<!-- Container para exibir o cabeçalho -->
+<div class="container-header">
 
-    <!-- Formulário de pesquisa -->
-    <form action="" method="post">
-        <input type="text" name="search" placeholder="Pesquisar..." >
+</div>
+
+
+<!-- Container para exibir os filtros -->
+<div class="container-nav">
+
+    <h1>Resíduos</h1>
+
+    <div class="container-filters">
+        <!-- Link para alternar ordenação -->
+        <a href="?order=<?= $nextOrder; ?>">A a Z</a>
+    
+        <!-- Formulário de pesquisa -->
+        <form action="" method="post">
+        <input type="text" name="search" placeholder="Pesquisar" >
         <select name="type" id="type">
             <option value="nome" selected>Nome</option>
             <option value="coletor">Coletor</option>
             <option value="descricao">Descrição</option>
         </select>
         <input type="submit" value="Pesquisar">
-    </form>
-
-    <!-- Link para alternar ordenação -->
-    <div>
-        <a href="?order=<?= $nextOrder; ?>">A a Z</a>
+        </form>
     </div>
+
+</div>
+
+
+<!-- Container para exibir os resíduos -->
+<div class="container-cards">
     
     <!-- Exibe os resíduos como cartões -->
     <?php
@@ -106,7 +121,11 @@ function getCardColor($coletor) {
 
 </div>
 
-<a href="formCad.php">Adicionar Resíduo</a>
+<footer>
+
+    <a href="formCad.php">Adicionar Resíduo</a>
+
+</footer>
 
 </body>
 </html>
