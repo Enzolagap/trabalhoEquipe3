@@ -28,6 +28,7 @@ if (isset($_POST['botao'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastrar Resíduo</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <form action="formCad.php" method="POST" enctype="multipart/form-data">
@@ -40,6 +41,7 @@ if (isset($_POST['botao'])) {
         Foto: <input type="file" name="foto" accept="image/*">
         <br>
         <input type="submit" name="botao" value="Cadastrar">
+        <a href="index.php"><button type="button">Voltar</button></a>
     </form>
 </body>
 </html>
