@@ -36,7 +36,13 @@ if (isset($_POST['botao'])) {
         <br>
         Descrição: <input name="descricao" type="text" required>
         <br>
-        Coletor: <input name="coletor" type="text" required>
+        Coletor: <select name="coletor" type="text" required >
+            <option value="Papel">Papel</option>
+            <option value="Plástico">Plástico</option>
+            <option value="Orgânico">Orgânico</option>
+            <option value="Metal">Metal</option>
+            <option value="Vidro">Vidro</option>
+            <option value="Não Reciclavel">Não Reciclavel</option>
         <br>
         Foto: <input type="file" name="foto" accept="image/*">
         <br>

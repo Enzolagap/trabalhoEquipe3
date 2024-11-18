@@ -19,6 +19,24 @@ if (isset($_POST['search']) && isset($_POST['type'])) {
     $residuos = Residuo::findall();
 }
 
+// Verifica o parâmetro de ordenação
+$order = $_GET['order'] ?? 'ASC';
+
+// Valida o valor de ordenação para evitar injeção
+if (!in_array($order, ['ASC', 'DESC'])) {
+    $order = 'ASC';
+}
+
+// Ordena os resíduos com base no nome
+if ($order === 'ASC') {
+    usort($residuos, fn($a, $b) => strcmp($a->getNome(), $b->getNome()));
+} else {
+    usort($residuos, fn($a, $b) => strcmp($b->getNome(), $a->getNome()));
+}
+
+// Alterna o tipo de ordenação para o próximo clique
+$nextOrder = $order === 'ASC' ? 'DESC' : 'ASC';
+
 // Função para obter a cor do card
 function getCardColor($coletor) {
     $colors = [
@@ -26,7 +44,8 @@ function getCardColor($coletor) {
         'Papel' => 'azul',
         'Metal' => 'amarelo',
         'Vidro' => 'verde',
-        'Plastico' => 'vermelho'
+        'Plastico' => 'vermelho',
+        'Não Reciclavel' => 'cinza'
     ];
     return $colors[$coletor] ?? 'default'; // Default para casos não mapeados
 }
@@ -47,7 +66,7 @@ function getCardColor($coletor) {
 
     <!-- Formulário de pesquisa -->
     <form action="" method="post">
-        <input type="text" name="search" placeholder="Pesquisar...">
+        <input type="text" name="search" placeholder="Pesquisar..." >
         <select name="type" id="type">
             <option value="nome" selected>Nome</option>
             <option value="coletor">Coletor</option>
@@ -56,6 +75,11 @@ function getCardColor($coletor) {
         <input type="submit" value="Pesquisar">
     </form>
 
+    <!-- Link para alternar ordenação -->
+    <div>
+        <a href="?order=<?= $nextOrder; ?>">A a Z</a>
+    </div>
+    
     <!-- Exibe os resíduos como cartões -->
     <?php
     foreach ($residuos as $residuo) {
@@ -73,8 +97,8 @@ function getCardColor($coletor) {
         echo "<a href='index.php'><button type='button'>Ver resíduo completo</button></a>";
         echo "</div>";
         echo "<div class='actions'>
-                <a href='formEdit.php?idResiduo={$residuo->getIdResiduo()}'><img src='http://localhost/trabalhoEquipe3/Imagens/1159633.png' width='25px'></a>
-                <a href='excluir.php?idResiduo={$residuo->getIdResiduo()}'><img src='http://localhost/trabalhoEquipe3/Imagens/126468.png' width='25px'></a> 
+                <a href='formEdit.php?idResiduo={$residuo->getIdResiduo()}'><img src='http://localhost/trabalhoEquipe3-main/Imagens/1159633.png' width='25px'></a>
+                <a href='excluir.php?idResiduo={$residuo->getIdResiduo()}'><img src='http://localhost/trabalhoEquipe3-main/Imagens/126468.png' width='25px'></a> 
               </div>";
         echo "</div>";
     }

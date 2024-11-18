@@ -160,6 +160,37 @@ class Residuo implements ActiveRecord {
         }
         return $residuos;
     }
+    public static function ascorder(): array {
+        $conexao = new MySQL();
+        $sql = "SELECT * FROM residuo ORDER BY nome ASC"
+        ;
+        $resultados = $conexao->consulta($sql);
+
+        $residuos = [];
+        foreach ($resultados as $resultado) {
+            // Cria objetos Residuo para cada resultado
+            $r = new Residuo($resultado['descricao'], $resultado['coletor'], $resultado['nome'], $resultado['foto']);
+            $r->setIdResiduo($resultado['idResiduo']);
+            $residuos[] = $r;
+        }
+        return $residuos;
+    }
+
+    public static function descorder(): array {
+        $conexao = new MySQL();
+        $sql = "SELECT * FROM residuo ORDER BY nome DESC"
+        ;
+        $resultados = $conexao->consulta($sql);
+
+        $residuos = [];
+        foreach ($resultados as $resultado) {
+            // Cria objetos Residuo para cada resultado
+            $r = new Residuo($resultado['descricao'], $resultado['coletor'], $resultado['nome'], $resultado['foto']);
+            $r->setIdResiduo($resultado['idResiduo']);
+            $residuos[] = $r;
+        }
+        return $residuos;
+    }
     
 }
 ?>
