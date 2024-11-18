@@ -47,7 +47,7 @@ function getCardColor($coletor) {
 
     <!-- Formulário de pesquisa -->
     <form action="" method="post">
-        <input type="text" name="search" placeholder="Pesquisar..." required>
+        <input type="text" name="search" placeholder="Pesquisar...">
         <select name="type" id="type">
             <option value="nome" selected>Nome</option>
             <option value="coletor">Coletor</option>
