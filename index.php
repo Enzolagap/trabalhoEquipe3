@@ -45,7 +45,7 @@ function getCardColor($coletor) {
         'Metal' => 'amarelo',
         'Vidro' => 'verde',
         'Plastico' => 'vermelho',
-        'Não Reciclavel' => 'cinza'
+        
     ];
     return $colors[$coletor] ?? 'default'; // Default para casos não mapeados
 }
