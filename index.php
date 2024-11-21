@@ -72,11 +72,13 @@ function getCardColor($coletor) {
 <div class="container-nav">
 
     <h1>Resíduos</h1>
+    <a href='formLogin.php'><button type='button'>Entrar</button></a>
+    <a href='formCriarUsuario.php'><button type='button'>Criar conta</button></a>
 
     <div class="container-filters">
         <!-- Link para alternar ordenação -->
         <a href="?order=<?= $nextOrder; ?>">A a Z</a>
-    
+        
         <!-- Formulário de pesquisa -->
         <form action="" method="post">
         <input type="text" name="search" placeholder="Pesquisar" >
@@ -109,7 +111,6 @@ function getCardColor($coletor) {
         echo "<p>{$residuo->getNome()}</p>";
         echo "<p>Coletor: {$residuo->getColetor()}</p>";
         echo "<p>{$residuo->getDescricao()}</p>";
-        echo "<a href='index.php'><button type='button'>Ver resíduo completo</button></a>";
         echo "</div>";
         echo "<div class='actions'>
                 <a href='formEdit.php?idResiduo={$residuo->getIdResiduo()}'><img src='http://localhost/trabalhoEquipe3-main/Imagens/1159633.png' width='25px'></a>
