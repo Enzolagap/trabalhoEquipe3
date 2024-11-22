@@ -1,5 +1,12 @@
 <?php
 require_once __DIR__ . "/vendor/autoload.php";
+// Inicia sessão
+session_start();
+// Verifica se a sessão foi criada
+if(!isset($_SESSION['id'])){
+    // Se não foi criada a sessão, redireciona para a página inicial
+    header("location: login.php");
+}
 
 // Verifica se há uma pesquisa sendo feita
 if (isset($_POST['search']) && isset($_POST['type'])) {
@@ -74,6 +81,7 @@ function getCardColor($coletor) {
     <h1>Resíduos</h1>
     <a href='formLogin.php'><button type='button'>Entrar</button></a>
     <a href='formCriarUsuario.php'><button type='button'>Criar conta</button></a>
+    <a href='logout.php'><button type='button'>Sair</button></a>
 
     <div class="container-filters">
         <!-- Link para alternar ordenação -->
@@ -125,6 +133,7 @@ function getCardColor($coletor) {
 <footer>
 
     <a href="formCad.php">Adicionar Resíduo</a>
+    
 
 </footer>
 
