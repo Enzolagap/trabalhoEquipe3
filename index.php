@@ -72,6 +72,10 @@ function getCardColor($coletor) {
 <!-- Container para exibir o cabeçalho -->
 <div class="container-header">
 
+    <a href='formLogin.php'><button type='button'>Entrar</button></a>
+    <a href='formCriarUsuario.php'><button type='button'>Criar conta</button></a>
+    <a href='logout.php'><button type='button'>Sair</button></a>
+
 </div>
 
 
@@ -79,9 +83,6 @@ function getCardColor($coletor) {
 <div class="container-nav">
 
     <h1>Resíduos</h1>
-    <a href='formLogin.php'><button type='button'>Entrar</button></a>
-    <a href='formCriarUsuario.php'><button type='button'>Criar conta</button></a>
-    <a href='logout.php'><button type='button'>Sair</button></a>
 
     <div class="container-filters">
         <!-- Link para alternar ordenação -->
