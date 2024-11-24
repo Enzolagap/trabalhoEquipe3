@@ -38,16 +38,37 @@ if (isset($_POST['botao'])) {
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <form action="formCriarUsuario.php" method="POST" >
-        Nome de Usuário: <input name="nome" type="text" placeholder="Crie um nome de usuário" required>
-        <br>
-        Email: <input name="email" type="email" placeholder="Insira seu email" required>
-        <br>
-        Senha: <input name="senha" type="password" placeholder="Crie uma senha"  required >
-        <br>
-        <input type="submit" name="botao" value="Criar conta">
-        <br>
-       Já tem uma conta? <a href='login.php'>Fazer login</a>
-    </form>
+
+    <div class="container-login">
+        <!-- Formulário -->
+        <div class="form-login">
+
+        <img src='http://localhost/trabalhoEquipe3-main/Imagens/Logo.png' width='300px'>
+
+            <form action="formCriarUsuario.php" method="POST">
+                <br>
+                <label for="nome">Nome de Usuário:</label>
+                <input name="nome" type="text" placeholder="Crie um nome de usuário" required>
+                <label for="email">Email:</label>
+                <input name="email" type="email" placeholder="Insira seu email" required>
+                <label for="senha">Senha:</label>
+                <input name="senha" type="password" placeholder="Crie uma senha" required>
+                <button type="submit">Criar Conta</button>
+                <br>
+                <div class="criar-conta">
+                    Já tem uma conta? <a href='login.php'>Fazer login</a>
+                </div>
+            </form>
+        </div>
+
+        <!-- Imagem e texto -->
+        <div class="image-container">
+            <img src='http://localhost/trabalhoEquipe3-main/Imagens/Background.jpg'>
+            <div class="image-overlay">
+                <h2><span class="highlight">Reciclar</span> faz parte da lição.</h2>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>

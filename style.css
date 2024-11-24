@@ -141,7 +141,7 @@ html,body {
 
 
 
-/* Estilo da tela de login */
+/* Estilo da tela de login e cadastro*/
 
 .container-login{
     display: grid;
@@ -203,13 +203,6 @@ html,body {
 .criar-conta a:hover {
     text-decoration: underline;
 }
-
-
-
-
-
-
-
 
 /* Lado direito: imagem e texto */
 .image-container {
