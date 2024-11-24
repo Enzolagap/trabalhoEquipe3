@@ -30,13 +30,61 @@ html,body {
     padding: 20px;
 }
 
+.container-filters form{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 20px;
+}
+
+.container-filters button {
+    width: 100%;
+    padding: 10px;
+    background-color: #359b47; /* Fundo verde */
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.container-filters button:hover {
+    background-color: #007722; /* Cor mais escura ao passar o mouse */
+}
+
+.container-filters input {
+    padding: 10px;
+    border: 3px solid #359b47; /* Borda verde */
+    border-radius: 50px;
+    font-size: 16px;
+}
+
+.container-filters .order-alfa {
+    display: flex;
+    flex-direction: row;
+    margin: 20px;
+    align-items: center;
+}
+
+.container-filters .order-alfa a {
+    text-decoration: none;
+    color: black;
+    padding: 10px;
+    font-size: 20px;
+}
+
+.container-filters .order-alfa a:hover {
+    text-decoration: underline;
+}
 
 /* Estilo do conteúdo principal */
 .container-cards {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-    padding: 20px;
+    padding: 50px;
 }
 
 /* Estilo dos cartões */
@@ -45,6 +93,7 @@ html,body {
     width: 500px;
     height: 200px;
     border-radius: 35px;
+    margin: 15px;
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     display: grid;
@@ -68,20 +117,6 @@ html,body {
     color: white;
     font-size: 20px;
     text-align: center;
-}
-
-.card-content button {
-    background-color: white;
-    border: none;
-    color: black;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 35px;
 }
 
 .card-image{

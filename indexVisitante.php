@@ -2,18 +2,12 @@
 require_once __DIR__ . "/vendor/autoload.php";
 
 // Verifica se há uma pesquisa sendo feita
-if (isset($_POST['search']) && isset($_POST['type'])) {
+if (isset($_POST['search'])) {
     $searchTerm = $_POST['search'];
-    $type = $_POST['type'];
     
-    // Filtra os resíduos com base no tipo escolhido (nome, descricao, coletor)
-    if ($type == 'nome') {
-        $residuos = Residuo::findnome($searchTerm);
-    } elseif ($type == 'descricao') {
-        $residuos = Residuo::finddescricao($searchTerm);
-    } elseif ($type == 'coletor') {
-        $residuos = Residuo::findcoletor($searchTerm);
-    }
+    // Filtra os resíduos com base no nome
+    $residuos = Residuo::findnome($searchTerm);
+
 } else {
     // Se não houver filtro, exibe todos os resíduos
     $residuos = Residuo::findall();
@@ -67,7 +61,7 @@ function getCardColor($coletor) {
 
     <a href='login.php'><button type='button'>Entrar</button></a>
     <a href='formCriarUsuario.php'><button type='button'>Criar conta</button></a>
-    
+
 </div>
 
 
@@ -78,17 +72,16 @@ function getCardColor($coletor) {
 
     <div class="container-filters">
         <!-- Link para alternar ordenação -->
-        <a href="?order=<?= $nextOrder; ?>">A a Z</a>
+        <div class="order-alfa">
+            <img src='http://localhost/trabalhoEquipe3-main/Imagens/filtroAlfa.png' width='25px'>
+            <a href="?order=<?= $nextOrder; ?>">A a Z</a>
+        </div>
+        
         
         <!-- Formulário de pesquisa -->
         <form action="" method="post">
-        <input type="text" name="search" placeholder="Pesquisar" >
-        <select name="type" id="type">
-            <option value="nome" selected>Nome</option>
-            <option value="coletor">Coletor</option>
-            <option value="descricao">Descrição</option>
-        </select>
-        <input type="submit" value="Pesquisar">
+        <input type="text" name="search" placeholder="🔍︎ Pesquisar" >
+        <button type="submit">Pesquisar</button>
         </form>
     </div>
 
