@@ -42,9 +42,10 @@ if (isset($_POST['botao'])) {
 
         <!-- Imagem e texto -->
         <div class="image-container">
-        <div class="image-overlay">
-            <h2>Reciclar faz parte da lição.</h2>
-        </div>
+            <img src='http://localhost/trabalhoEquipe3-main/Imagens/Background.jpg'>
+            <div class="image-overlay">
+                <h2><span class="highlight">Reciclar</span> faz parte da lição.</h2>
+            </div>
         </div>
     </div>
 
