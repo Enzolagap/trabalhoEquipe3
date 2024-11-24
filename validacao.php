@@ -8,7 +8,7 @@ if (isset($_POST['botao'])) {
     $senha = $_POST['senha'];
 
     // Busca o usuário pelo nome
-    $usuario = Usuario::findnome($nome);
+    $usuario = Usuario::find($nome);
 
     if (!$usuario) {
         // Se o usuário não for encontrado, exibe uma mensagem

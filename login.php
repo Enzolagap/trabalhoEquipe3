@@ -8,7 +8,7 @@ if (isset($_POST['botao'])) {
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,16 +17,36 @@ if (isset($_POST['botao'])) {
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <form action="validacao.php" method="POST">
-        Nome de Usuário: <input name="nome" type="text" placeholder="Insira seu nome de usuário" required>
-        <br>
-        Senha: <input name="senha" type="password" placeholder="Insira sua senha" required>
-        <br>
-        <input type="submit" name="botao" value="Entrar">
-        <br>
-        <a href='indexVisitante.php'><button type='button'>Continuar como visitante</button></a>
-        <br>
-        Não tem uma conta? <a href="formCriarUsuario.php">Criar Conta</a>
-    </form>
+
+    <div class="container-login">
+        <!-- Formulário -->
+        <div class="form-login">
+
+        <img src='http://localhost/trabalhoEquipe3-main/Imagens/Logo.png' width='300px'>
+
+            <form action="validacao.php" method="POST">
+                <br>
+                <label for="nome">Nome de Usuário:</label>
+                <input name="nome" type="text" placeholder="Insira seu nome de usuário" required>
+                <label for="senha">Senha:</label>
+                <input name="senha" type="password" placeholder="Insira sua senha" required>
+                <button type="submit">Entrar</button>
+                <br>
+                <a href='indexVisitante.php'><button type='button'>Continuar como visitante</button></a>
+                <br>
+                <div class="criar-conta">
+                    Não tem uma conta? <a href="formCriarUsuario.php">Criar Conta</a>
+                </div>
+            </form>
+        </div>
+
+        <!-- Imagem e texto -->
+        <div class="image-container">
+        <div class="image-overlay">
+            <h2>Reciclar faz parte da lição.</h2>
+        </div>
+        </div>
+    </div>
+
 </body>
 </html>

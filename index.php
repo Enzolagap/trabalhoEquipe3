@@ -59,7 +59,7 @@ function getCardColor($coletor) {
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -121,10 +121,10 @@ function getCardColor($coletor) {
         echo "<p>Coletor: {$residuo->getColetor()}</p>";
         echo "<p>{$residuo->getDescricao()}</p>";
         echo "</div>";
-        echo "<div class='actions'>
-                <a href='formEdit.php?idResiduo={$residuo->getIdResiduo()}'><img src='http://localhost/trabalhoEquipe3-main/Imagens/1159633.png' width='25px'></a>
-                <a href='excluir.php?idResiduo={$residuo->getIdResiduo()}'><img src='http://localhost/trabalhoEquipe3-main/Imagens/126468.png' width='25px'></a> 
-              </div>";
+        echo "<div class='actions'>";
+        echo "<a href='formEdit.php?idResiduo={$residuo->getIdResiduo()}'><img src='http://localhost/trabalhoEquipe3-main/Imagens/Editar.png' width='25px'></a>";
+        echo "<a href='excluir.php?idResiduo={$residuo->getIdResiduo()}'><img src='http://localhost/trabalhoEquipe3-main/Imagens/Excluir.png' width='25px'></a>";
+        echo "</div>";
         echo "</div>";
     }
     ?>
