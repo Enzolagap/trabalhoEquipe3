@@ -71,12 +71,27 @@ function getCardColor($coletor) {
     <h1>Resíduos</h1>
 
     <div class="container-filters">
-        <!-- Link para alternar ordenação -->
-        <div class="order-alfa">
-            <img src='http://localhost/trabalhoEquipe3-main/Imagens/filtroAlfa.png' width='25px'>
+        <!-- Link para alternar ordenação por coletor -->
+        <div class="order-coletor">
+            <div class="select-container">
+                <select id="collector-select" name="collector">
+                    <option value="default" disabled selected>Filtrar por Coletor</option>
+                    <option value="Organico">Orgânico</option>
+                    <option value="Papel">Papel</option>
+                    <option value="Metal">Metal</option>
+                    <option value="Vidro">Vidro</option>
+                    <option value="Plastico">Plástico</option>
+                </select>
+                <img src='http://localhost/trabalhoEquipe3-main/Imagens/filtroColetor.png'>
+            </div>
+        </div>
+
+
+        <!-- Link para alternar ordenação alfabeticamente -->
+        <div class="order-name">
+            <img src='http://localhost/trabalhoEquipe3-main/Imagens/filtroAlfa.png'>
             <a href="?order=<?= $nextOrder; ?>">A a Z</a>
         </div>
-        
         
         <!-- Formulário de pesquisa -->
         <form action="" method="post">
