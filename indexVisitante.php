@@ -131,13 +131,14 @@ function getCardColor($coletor) {
     }
     ?>
 
+    <div class="card-add">
+        <a href='login.php' onclick="alert('Você precisa efetuar o login para adicionar um resíduo!'); return true;" class="cadastrar-link">
+            <div class="add-icon">+</div>
+            <h2>Cadastrar Resíduo</h2>
+        </a>
+    </div>
+
 </div>
-
-<footer>
-
-    <a href="login.php" onclick="alert('Você precisa efetuar o login para adicionar um resíduo!'); return true;"><button type="button">Adicionar resíduo</button></a>
-
-</footer>
 
 </body>
 </html>

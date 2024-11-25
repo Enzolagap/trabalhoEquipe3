@@ -143,14 +143,13 @@ function getCardColor($coletor) {
         echo "</div>";
     }
     ?>
-
+    <div class="card-add">
+        <a href='formCad.php' class="cadastrar-link">
+            <div class="add-icon">+</div>
+            <h2>Cadastrar Resíduo</h2>
+        </a>
+    </div>
 </div>
-
-<footer>
-
-    <a href="formCad.php"><button type="button">Adicionar resíduo</button></a>
-
-</footer>
 
 </body>
 </html>

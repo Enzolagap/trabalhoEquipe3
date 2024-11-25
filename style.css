@@ -177,13 +177,51 @@ html,body {
     cursor: pointer;
 }
 
-.card-image{
+.card-image {
     width: 180px;
     height: 180px;
     border-radius: 35px;
 }
 
-.card:hover {
+.card-add {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 500px;
+    height: 200px;
+    cursor: pointer;
+    border-radius: 35px;
+    border-color: #359b47;
+    border-width: 8px;
+    border-style: solid;
+    margin: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.add-icon {
+    font-size: 180px;
+    margin-right: 20px;
+    color: #359b47;
+    text-decoration: none;
+}
+
+.cadastrar-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+}
+
+.cadastrar-link h2 {
+    font-size: 35px;
+    color: rgb(94, 93, 93);
+    font-weight: bold;
+    margin: 0;
+}
+
+.card:hover, .card-add:hover {
     transform: scale(1.05);
 }
 
@@ -430,22 +468,7 @@ input[type="file"] {
     margin-bottom: 20px;
 }
 
-/* Estilo do footer */
-footer button {
-    padding: 10px;
-    background-color: #359b47;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: bold;
-}
-
-footer button:hover {
-    background-color: #007722;
-}
-
+/* Estilo para campos de texto, email e senha */
 input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus{
     border-color: #007722;
     outline: none;
