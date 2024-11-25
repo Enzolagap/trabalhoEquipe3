@@ -150,7 +150,6 @@ html,body {
     grid-template-columns: 1fr 1fr 0.3fr;
     align-items: center;
     transition: transform 0.3s;
-
 }
 
 .card-content {
@@ -333,6 +332,101 @@ html,body {
     color: #359b47;
 }
 
+.titulo {
+    text-align: left;
+    font-size: 40px;
+    font-weight: normal;
+    margin-bottom: 20px;
+}
+
+/* Estilo do Cadastro */
+.form-cadastro {
+    height: 100%;
+    max-width: 400px;
+    height: auto;
+    padding: 100px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-cadastro form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-cadastro label {
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.form-cadastro input {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 2px solid #359b47;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+.form-cadastro input:focus {
+    border-color: #007722;
+    outline: none;
+}
+
+.select-coletor select {
+    width: 100%;
+    appearance: none;
+    border: 2px solid #359b47;
+    border-radius: 8px;
+    font-size: 16px;
+    padding: 12px;
+    margin-bottom: 15px;
+}
+
+.select-coletor select:focus {
+    border-color: #007722;
+    outline: none;
+}
+
+/* Estilo do Botão */
+.botoes {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.botoes button {
+    flex: 1;
+    padding: 12px;
+    background-color: #359b47;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.botoes button:hover {
+    background-color: #007722;
+}
+
+/* Campo de foto */
+input[type="file"] {
+    padding: 10px;
+    border: 2px solid #359b47;
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: #f9f9f9;
+    margin-bottom: 20px;
+}
+
+/* Estilo do footer */
 footer button {
     padding: 10px;
     background-color: #359b47;

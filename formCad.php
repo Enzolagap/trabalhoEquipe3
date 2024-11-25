@@ -29,24 +29,37 @@ if (isset($_POST['botao'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastrar Resíduo</title>
     <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
 </head>
 <body>
-    <form action="formCad.php" method="POST" enctype="multipart/form-data">
-        Nome: <input name="nome" type="text" required>
-        <br>
-        Descrição: <input name="descricao" type="text" required>
-        <br>
-        Coletor: <select name="coletor" type="text" required >
-            <option value="Papel">Papel</option>
-            <option value="Plástico">Plástico</option>
-            <option value="Orgânico">Orgânico</option>
-            <option value="Metal">Metal</option>
-            <option value="Vidro">Vidro</option>
-        <br>
-        Foto: <input type="file" name="foto" accept="image/*" required>
-        <br>
-        <input type="submit" name="botao" value="Cadastrar">
-        <a href="index.php"><button type="button">Voltar</button></a>
-    </form>
+    <div class="form-cadastro">
+        <h1 class="titulo">Cadastrar Resíduo</h1>
+
+        <form action="formCad.php" method="POST" enctype="multipart/form-data">
+            <label for="nome">Nome: </label>
+            <input name="nome" type="text" required>
+            <label for="descricao">Descrição: </label>
+            <input name="descricao" type="text" required>
+            <label for="coletor">Coletor: </label>
+            <div class="select-coletor">
+                <select name="coletor" type="text" required>
+                    <option value="default" selected disabled>Selecionar coletor</option>
+                    <option value="Papel">Papel</option>
+                    <option value="Plástico">Plástico</option>
+                    <option value="Orgânico">Orgânico</option>
+                    <option value="Metal">Metal</option>
+                    <option value="Vidro">Vidro</option>
+                </select>
+            </div>
+            <label for="foto">Foto: </label>
+            <input type="file" name="foto" id="imageInput" accept="image/*" required>
+            <br>
+            <div class="botoes">
+                <button type="submit" name="botao">Cadastrar</button>
+                <br>
+                <a href="index.php"><button type="button">Voltar</button></a>
+            </div>
+        </form>
+    </div>
 </body>
 </html>
