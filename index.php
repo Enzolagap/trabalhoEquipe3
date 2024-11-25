@@ -137,8 +137,7 @@ function getCardColor($coletor) {
 
 <footer>
 
-    <a href="formCad.php">Adicionar Resíduo</a>
-    
+    <a href="formCad.php"><button type="button">Adicionar resíduo</button></a>
 
 </footer>
 

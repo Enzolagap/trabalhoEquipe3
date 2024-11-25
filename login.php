@@ -30,7 +30,7 @@ if (isset($_POST['botao'])) {
                 <input name="nome" type="text" placeholder="Insira seu nome de usuário" required>
                 <label for="senha">Senha:</label>
                 <input name="senha" type="password" placeholder="Insira sua senha" required>
-                <button type="submit">Entrar</button>
+                <button type="submit" name="botao">Entrar</button>
                 <br>
                 <a href='indexVisitante.php'><button type='button'>Continuar como visitante</button></a>
                 <br>

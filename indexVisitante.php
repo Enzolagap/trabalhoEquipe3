@@ -128,7 +128,7 @@ function getCardColor($coletor) {
 
 <footer>
 
-    <a href="login.php" onclick="alert('Você precisa efetuar o login para adicionar um resíduo!'); return true;">Adicionar resíduo</a>
+    <a href="login.php" onclick="alert('Você precisa efetuar o login para adicionar um resíduo!'); return true;"><button type="button">Adicionar resíduo</button></a>
 
 </footer>
 
