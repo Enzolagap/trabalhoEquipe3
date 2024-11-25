@@ -19,6 +19,7 @@ html,body {
 
 .container-nav h1{
     text-align: center;
+    font-weight: normal;
 }
 
 .container-filters{
@@ -57,7 +58,7 @@ html,body {
 .container-filters input {
     padding: 10px;
     border: 3px solid #359b47;
-    border-radius: 50px;
+    border-radius: 12px;
     font-size: 16px;
 }
 
