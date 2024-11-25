@@ -66,6 +66,8 @@ function getCardColor($coletor) {
 <!-- Container para exibir o cabeçalho -->
 <div class="container-header">
 
+    <a href='logout.php'><button type='button'>Sair</button></a>
+
 </div>
 
 
