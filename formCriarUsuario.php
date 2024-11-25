@@ -53,7 +53,7 @@ if (isset($_POST['botao'])) {
                 <input name="email" type="email" placeholder="Insira seu email" required>
                 <label for="senha">Senha:</label>
                 <input name="senha" type="password" placeholder="Crie uma senha" required>
-                <button type="submit">Criar Conta</button>
+                <a href="login.php"><button type="submit" name="botao">Criar Conta</button></a>
                 <br>
                 <div class="criar-conta">
                     Já tem uma conta? <a href='login.php'>Fazer login</a>

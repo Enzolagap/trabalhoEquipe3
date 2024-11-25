@@ -72,13 +72,14 @@ class Residuo implements ActiveRecord {
         
         // Escapar o conteúdo binário da imagem
         $fotoBinario = $this->foto ? addslashes($this->foto) : null;
+        
 
         // Verifica se é um update (se o idResiduo já existe)
         if (isset($this->idResiduo)) {
             $sql = "UPDATE residuo SET descricao = '{$this->descricao}', coletor = '{$this->coletor}', nome = '{$this->nome}', foto = '{$fotoBinario}' WHERE idResiduo = {$this->idResiduo}";
         } else {
             // Caso seja um insert (novo registro)
-            $sql = "INSERT INTO residuo (descricao, coletor, nome, foto) VALUES ('{$this->descricao}', '{$this->coletor}', '{$this->nome}', '{$fotoBinario}')";
+            $sql = "INSERT INTO residuo (descricao, coletor, nome, foto) VALUES ('{$this->descricao}', '{$this->coletor}', CONCAT(UPPER(substr('{$this->nome}', 1,1)), LOWER(substr('{$this->nome}', 2,length('{$this->nome}')))), '{$fotoBinario}')";
         }
 
         return $conexao->executa($sql);
@@ -162,35 +163,41 @@ class Residuo implements ActiveRecord {
     }
     public static function ascorder(): array {
         $conexao = new MySQL();
-        $sql = "SELECT * FROM residuo ORDER BY nome ASC"
-        ;
+        $sql = "SELECT * FROM residuo ORDER BY nome ASC"; // Ordena normalmente
         $resultados = $conexao->consulta($sql);
-
+    
         $residuos = [];
         foreach ($resultados as $resultado) {
+            // Ajusta o nome para que a primeira letra fique em maiúscula
+            $nome = ucfirst($resultado['nome']); // Converte a primeira letra em maiúscula
+    
             // Cria objetos Residuo para cada resultado
-            $r = new Residuo($resultado['descricao'], $resultado['coletor'], $resultado['nome'], $resultado['foto']);
+            $r = new Residuo($resultado['descricao'], $resultado['coletor'], $nome, $resultado['foto']);
             $r->setIdResiduo($resultado['idResiduo']);
             $residuos[] = $r;
         }
         return $residuos;
     }
-
+    
     public static function descorder(): array {
         $conexao = new MySQL();
-        $sql = "SELECT * FROM residuo ORDER BY nome DESC"
-        ;
+        $sql = "SELECT * FROM residuo ORDER BY nome DESC"; // Ordena normalmente
         $resultados = $conexao->consulta($sql);
-
+    
         $residuos = [];
         foreach ($resultados as $resultado) {
+            // Ajusta o nome para que a primeira letra fique em maiúscula
+            $nome = ucfirst($resultado['nome']); // Converte a primeira letra em maiúscula
+    
             // Cria objetos Residuo para cada resultado
-            $r = new Residuo($resultado['descricao'], $resultado['coletor'], $resultado['nome'], $resultado['foto']);
+            $r = new Residuo($resultado['descricao'], $resultado['coletor'], $nome, $resultado['foto']);
             $r->setIdResiduo($resultado['idResiduo']);
             $residuos[] = $r;
         }
         return $residuos;
     }
+    
+
     
 }
 ?>
