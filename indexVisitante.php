@@ -53,6 +53,7 @@ function getCardColor($coletor) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página de Resíduos</title>
     <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
 </head>
 <body>
 
@@ -117,7 +118,13 @@ function getCardColor($coletor) {
         echo "<div class='card-content'>";
         echo "<p>{$residuo->getNome()}</p>";
         echo "<p>Coletor: {$residuo->getColetor()}</p>";
-        echo "<p>{$residuo->getDescricao()}</p>";
+        $descricao = $residuo->getDescricao();
+        if (strlen($descricao) > 30) {
+            $descricaoCortada = substr($descricao, 0, 30) . "...";
+            echo "<p class='descricao' onclick='toggleDescricao(this, event)' data-full-text='{$descricao}.'>{$descricaoCortada}</p>";
+        } else {
+            echo "<p>{$descricao}.</p>";
+        }
         echo "</div>";
      
         echo "</div>";
