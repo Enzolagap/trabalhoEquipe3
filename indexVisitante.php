@@ -41,7 +41,7 @@ function getCardColor($coletor) {
         'Plastico' => 'vermelho',
         
     ];
-    return $colors[$coletor] ?? 'default'; // Default para casos não mapeados
+    return $colors[$coletor];
 }
 ?>
 
@@ -88,8 +88,7 @@ function getCardColor($coletor) {
 
         <!-- Link para alternar ordenação alfabeticamente -->
         <div class="order-name">
-            <img src='http://localhost/trabalhoEquipe3-main/Imagens/filtroAlfa.png'>
-            <a href="?order=<?= $nextOrder; ?>">A a Z</a>
+            <a href="?order=<?= $nextOrder; ?>"><img src='http://localhost/trabalhoEquipe3-main/Imagens/filtroAlfa.png'> A a Z</a>
         </div>
         
         <!-- Formulário de pesquisa -->
