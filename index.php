@@ -121,8 +121,8 @@ function getCardColor($coletor) {
         echo "<p>{$residuo->getDescricao()}</p>";
         echo "</div>";
         echo "<div class='actions'>
-                <a href='formEdit.php?idResiduo={$residuo->getIdResiduo()}'><img src='http://localhost/trabalhoEquipe3-main/Imagens/1159633.png' width='25px'></a>
-                <a href='excluir.php?idResiduo={$residuo->getIdResiduo()}'><img src='http://localhost/trabalhoEquipe3-main/Imagens/126468.png' width='25px'></a> 
+                <a href='formEdit.php?idResiduo={$residuo->getIdResiduo()}'><img src='http://localhost/trabalhoEquipe3-main/Imagens/Editar.png' width='25px'></a>
+                <a href='excluir.php?idResiduo={$residuo->getIdResiduo()}'><img src='http://localhost/trabalhoEquipe3-main/Imagens/Excluir.png' width='25px'></a> 
               </div>";
         echo "</div>";
     }

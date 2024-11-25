@@ -2,18 +2,12 @@
 require_once __DIR__ . "/vendor/autoload.php";
 
 // Verifica se há uma pesquisa sendo feita
-if (isset($_POST['search']) && isset($_POST['type'])) {
+if (isset($_POST['search'])) {
     $searchTerm = $_POST['search'];
-    $type = $_POST['type'];
     
-    // Filtra os resíduos com base no tipo escolhido (nome, descricao, coletor)
-    if ($type == 'nome') {
-        $residuos = Residuo::findnome($searchTerm);
-    } elseif ($type == 'descricao') {
-        $residuos = Residuo::finddescricao($searchTerm);
-    } elseif ($type == 'coletor') {
-        $residuos = Residuo::findcoletor($searchTerm);
-    }
+    // Filtra os resíduos com base no nome
+    $residuos = Residuo::findnome($searchTerm);
+
 } else {
     // Se não houver filtro, exibe todos os resíduos
     $residuos = Residuo::findall();
@@ -64,7 +58,8 @@ function getCardColor($coletor) {
 
 <!-- Container para exibir o cabeçalho -->
 <div class="container-header">
-
+    <a href='login.php'><button type='button'>Entrar</button></a>
+    <a href='formCriarUsuario.php'><button type='button'>Criar conta</button></a>
 </div>
 
 
@@ -72,22 +67,34 @@ function getCardColor($coletor) {
 <div class="container-nav">
 
     <h1>Resíduos</h1>
-    <a href='formLogin.php'><button type='button'>Entrar</button></a>
-    <a href='formCriarUsuario.php'><button type='button'>Criar conta</button></a>
 
     <div class="container-filters">
-        <!-- Link para alternar ordenação -->
-        <a href="?order=<?= $nextOrder; ?>">A a Z</a>
+        <!-- Link para alternar ordenação por coletor -->
+        <div class="order-coletor">
+            <div class="select-container">
+                <select>
+                    <option value="default" selected disabled>Filtrar por coletor</option>
+                    <option value="Orgânico">Orgânico</option>
+                    <option value="Papel">Papel</option>
+                    <option value="Metal">Metal</option>
+                    <option value="Vidro">Vidro</option>
+                    <option value="Plástico">Plástico</option>
+                </select>
+                <img src='http://localhost/trabalhoEquipe3-main/Imagens/filtroColetor.png'>
+            </div>
+        </div>
+
+
+        <!-- Link para alternar ordenação alfabeticamente -->
+        <div class="order-name">
+            <img src='http://localhost/trabalhoEquipe3-main/Imagens/filtroAlfa.png'>
+            <a href="?order=<?= $nextOrder; ?>">A a Z</a>
+        </div>
         
         <!-- Formulário de pesquisa -->
         <form action="" method="post">
-        <input type="text" name="search" placeholder="Pesquisar" >
-        <select name="type" id="type">
-            <option value="nome" selected>Nome</option>
-            <option value="coletor">Coletor</option>
-            <option value="descricao">Descrição</option>
-        </select>
-        <input type="submit" value="Pesquisar">
+        <input type="text" name="search" placeholder="🔍︎ Pesquisar">
+        <button type="submit">Pesquisar</button>
         </form>
     </div>
 
