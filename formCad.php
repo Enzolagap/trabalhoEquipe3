@@ -42,9 +42,8 @@ if (isset($_POST['botao'])) {
             <option value="Orgânico">Orgânico</option>
             <option value="Metal">Metal</option>
             <option value="Vidro">Vidro</option>
-            <option value="Não Reciclavel">Não Reciclavel</option>
         <br>
-        Foto: <input type="file" name="foto" accept="image/*">
+        Foto: <input type="file" name="foto" accept="image/*" required>
         <br>
         <input type="submit" name="botao" value="Cadastrar">
         <a href="index.php"><button type="button">Voltar</button></a>
