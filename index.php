@@ -13,9 +13,14 @@ if (isset($_POST['search']) && isset($_POST['type'])) {
     $searchTerm = $_POST['search'];
     $type = $_POST['type'];
     
-    // Filtra os resíduos com base no nome
-    $residuos = Residuo::findnome($searchTerm);
-
+    // Filtra os resíduos com base no tipo escolhido (nome, descricao, coletor)
+    if ($type == 'nome') {
+        $residuos = Residuo::findnome($searchTerm);
+    } elseif ($type == 'descricao') {
+        $residuos = Residuo::finddescricao($searchTerm);
+    } elseif ($type == 'coletor') {
+        $residuos = Residuo::findcoletor($searchTerm);
+    }
 } else {
     // Se não houver filtro, exibe todos os resíduos
     $residuos = Residuo::findall();
@@ -54,7 +59,7 @@ function getCardColor($coletor) {
 ?>
 
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -67,10 +72,6 @@ function getCardColor($coletor) {
 <!-- Container para exibir o cabeçalho -->
 <div class="container-header">
 
-    <a href='formLogin.php'><button type='button'>Entrar</button></a>
-    <a href='formCriarUsuario.php'><button type='button'>Criar conta</button></a>
-    <a href='logout.php'><button type='button'>Sair</button></a>
-
 </div>
 
 
@@ -78,17 +79,22 @@ function getCardColor($coletor) {
 <div class="container-nav">
 
     <h1>Resíduos</h1>
+    
+ 
+    <a href='logout.php'><button type='button'>Sair</button></a>
 
     <div class="container-filters">
         <!-- Link para alternar ordenação -->
-        <div class="order-alfa">
-            <img src='http://localhost/trabalhoEquipe3-main/Imagens/filtroAlfa.png' width='25px'>
-            <a href="?order=<?= $nextOrder; ?>">A a Z</a>
-        </div>
+        <a href="?order=<?= $nextOrder; ?>">A a Z</a>
         
         <!-- Formulário de pesquisa -->
         <form action="" method="post">
-        <input type="text" name="search" placeholder="🔍︎ Pesquisar" >
+        <input type="text" name="search" placeholder="Pesquisar" >
+        <select name="type" id="type">
+            <option value="nome" selected>Nome</option>
+            <option value="coletor">Coletor</option>
+            <option value="descricao">Descrição</option>
+        </select>
         <input type="submit" value="Pesquisar">
         </form>
     </div>
@@ -114,10 +120,10 @@ function getCardColor($coletor) {
         echo "<p>Coletor: {$residuo->getColetor()}</p>";
         echo "<p>{$residuo->getDescricao()}</p>";
         echo "</div>";
-        echo "<div class='actions'>";
-        echo "<a href='formEdit.php?idResiduo={$residuo->getIdResiduo()}'><img src='http://localhost/trabalhoEquipe3-main/Imagens/Editar.png' width='25px'></a>";
-        echo "<a href='excluir.php?idResiduo={$residuo->getIdResiduo()}'><img src='http://localhost/trabalhoEquipe3-main/Imagens/Excluir.png' width='25px'></a>";
-        echo "</div>";
+        echo "<div class='actions'>
+                <a href='formEdit.php?idResiduo={$residuo->getIdResiduo()}'><img src='http://localhost/trabalhoEquipe3-main/Imagens/1159633.png' width='25px'></a>
+                <a href='excluir.php?idResiduo={$residuo->getIdResiduo()}'><img src='http://localhost/trabalhoEquipe3-main/Imagens/126468.png' width='25px'></a> 
+              </div>";
         echo "</div>";
     }
     ?>

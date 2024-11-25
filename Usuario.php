@@ -17,7 +17,7 @@ class Usuario implements ActiveRecord {
     
 
     
-    public function __construct(private string $email, private string $nome, private string $senha) {
+    public function __construct(private string $nome, private string $email , private string $senha) {
     
     }
 
@@ -88,7 +88,7 @@ class Usuario implements ActiveRecord {
         $resultado = $conexao->consulta($sql);
 
         // Cria o objeto Usuario com os dados do banco
-        $u = new Usuario($resultado[0]['email'], $resultado[0]['nome'], $resultado[0]['senha']);
+        $u = new Usuario($resultado[0]['nome'], $resultado[0]['email'], $resultado[0]['senha']);
         $u->setIdUsuario($resultado[0]['idUsuario']);
         return $u;
     }
@@ -102,13 +102,29 @@ class Usuario implements ActiveRecord {
         $usuarios = [];
         foreach ($resultados as $resultado) {
             // Cria objetos Usuario para cada resultado
-            $u = new Usuario($resultado['email'], $resultado['nome'], $resultado['senha']);
+            $u = new Usuario($resultado['nome'], $resultado['email'], $resultado['senha']);
             $u->setIdUsuario($resultado['idUsuario']);
             $usuarios[] = $u;
         }
         return $usuarios;
     }
 
+    public static function findnome($nome): ?Usuario {
+        $conexao = new MySQL();
+        $sql = "SELECT * FROM usuario WHERE nome = '$nome'";
+        $resultado = $conexao->consulta($sql);
+    
+        if (empty($resultado)) {
+            // Retorna null se nenhum usuário for encontrado
+            return null;
+        }
+    
+        // Cria o objeto Usuario com os dados encontrados
+        $u = new Usuario($resultado[0]['nome'], $resultado[0]['email'], $resultado[0]['senha']);
+        $u->setIdUsuario($resultado[0]['idUsuario']);
+        return $u;
+    }
+    
     
 
     
