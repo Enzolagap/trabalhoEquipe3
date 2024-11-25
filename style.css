@@ -140,24 +140,24 @@ html,body {
 .card {
     position: relative;
     width: 500px;
-    height: 200px;
+    height: auto;
+    min-height: 200px;
     border-radius: 35px;
     margin: 15px;
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     display: grid;
-    grid-template-rows: 1fr 1fr 0.3fr;
     grid-template-columns: 1fr 1fr 0.3fr;
     align-items: center;
     transition: transform 0.3s;
+
 }
 
 .card-content {
-    flex-grow: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 5px;
 }
 
@@ -166,6 +166,12 @@ html,body {
     color: white;
     font-size: 20px;
     text-align: center;
+}
+
+.descricao{
+    overflow: visible;
+    word-wrap: break-word;
+    cursor: pointer;
 }
 
 .card-image{
