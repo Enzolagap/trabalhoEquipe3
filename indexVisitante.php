@@ -122,7 +122,7 @@ function getCardColor($coletor) {
             $descricaoCortada = substr($descricao, 0, 30) . "...";
             echo "<p class='descricao' onclick='toggleDescricao(this, event)' data-full-text='{$descricao}.'>{$descricaoCortada}</p>";
         } else {
-            echo "<p>{$descricao}.</p>";
+            echo "<p class='descricao'>{$descricao}.</p>";
         }
         echo "</div>";
      
