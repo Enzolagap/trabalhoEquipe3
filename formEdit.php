@@ -34,6 +34,7 @@ if (isset($_POST['botao'])) {
         $tipo_arquivo = mime_content_type($_FILES['foto']['tmp_name']);
 
         if (in_array($tipo_arquivo, $tipos_permitidos)) {
+            // Lê o conteúdo do arquivo de imagem e converte em binário
             $foto = file_get_contents($_FILES['foto']['tmp_name']);
         } else {
             // Redireciona de volta para o formulário caso o tipo de arquivo não seja permitido
@@ -74,14 +75,40 @@ if (isset($_POST['botao'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edita Resíduo</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
 </head>
+
+<script>
+    // Função que será chamada na submissão do formulário
+    function validarFormulario(event) {
+        event.preventDefault(); // Impede o envio do formulário
+
+        var foto = document.forms["formEdit"][<?php echo $residuo->getFoto(); ?>].files[0];
+        var tiposPermitidos = ['image/jpg', 'image/jpeg', 'image/png', 'image/webp', 'image/jfif', 'image/tiff', 'image/psd', 'image/bmp'];
+
+        if (foto) {
+            var tipoArquivo = foto.type;
+
+            console.log("Tipo de arquivo: " + tipoArquivo); // Debug
+
+            // Se o tipo do arquivo não for permitido
+            if (!tiposPermitidos.includes(tipoArquivo)) {
+                alert('Tipo de imagem inválido. Por favor, envie uma imagem válida (JPG, PNG, WebP, etc.).');
+                return false; // Impede o envio do formulário
+            }
+        }
+
+        // Se tudo estiver correto, envia o formulário
+        alert('Resíduo editado com sucesso!');
+        document.forms["formEdit"].submit(); // Envia o formulário
+        return true;
+    }
+</script>
 
 <body>
     <div class='container'>
         <div class="form-cadastro">
             <h1 class="titulo">Editar Resíduo</h1>
-            <form action="formEdit.php?idResiduo=<?php echo $_GET['idResiduo']; ?>" method="POST" enctype="multipart/form-data" onsubmit="return validarFormulario();">
+            <form action="formEdit.php?idResiduo=<?php echo $_GET['idResiduo']; ?>" method="POST" enctype="multipart/form-data" onsubmit="return validarFormulario(event);">
                 <label for="nome">Nome: </label>
                 <input name="nome" value="<?php echo htmlspecialchars($residuo->getNome()); ?>" type="text" required>
                 <label for="descricao">Descrição: </label>
@@ -98,7 +125,7 @@ if (isset($_POST['botao'])) {
                     </select>
                 </div>
                 <label for="id">Foto: </label>
-                <input type="file" name="foto" accept="image/*">
+                <input type="file" name="foto" id="foto" accept="image/*">
                 <br>
                 <!-- ID do resíduo passado como campo oculto -->
                 <input name="idResiduo" value="<?php echo $residuo->getIdResiduo(); ?>" type="hidden">
@@ -109,14 +136,7 @@ if (isset($_POST['botao'])) {
                 </div>
             </form>
         </div>
-
-
     </div>
-
-
-
-
-
 </body>
 
 </html>
