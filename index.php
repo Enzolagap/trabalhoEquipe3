@@ -144,15 +144,15 @@ function getCardColor($coletor)
             echo "<div class='card $colorClass'>";
             echo "<img src='data:image/jpeg;base64," . base64_encode($residuo->getFoto()) . "' alt='Imagem do Resíduo' class='card-image'>";
             echo "<div class='card-content'>";
-            echo "<p>{$residuo->getNome()}</p>";
-            echo "<p>Coletor: {$residuo->getColetor()}</p>";
+            echo "<p class='txt'>{$residuo->getNome()}</p>";
+            echo "<p class='txt'>Coletor: {$residuo->getColetor()}</p>";
 
             $descricao = $residuo->getDescricao();
             if (strlen($descricao) > 30) {
                 $descricaoCortada = substr($descricao, 0, 30) . "...";
                 echo "<p class='descricao' onclick='toggleDescricao(this, event)' data-full-text='{$descricao}.'>{$descricaoCortada}</p>";
             } else {
-                echo "<p>{$descricao}.</p>";
+                echo "<p class='descricao-quebrada'>{$descricao}.</p>";
             }
 
             echo "</div>";

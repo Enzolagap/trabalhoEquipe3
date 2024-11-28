@@ -244,17 +244,32 @@ html,body {
     gap: 5px;
 }
 
-.card-content p {
+.card-content .txt {
+    line-height: 120%;
+    margin: 0;
+    color: white;
+    font-size: 20px;
+    text-align: center;
+}
+
+.descricao-quebrada {
+    line-height: 120%;
     margin: 0;
     color: white;
     font-size: 20px;
     text-align: justify;
+    overflow: hidden;
 }
 
 .descricao{
+    line-height: 120%;
+    margin: 0;
+    color: white;
+    font-size: 20px;
     overflow: visible;
     word-wrap: break-word;
     cursor: pointer;
+    text-align: justify;
 }
 
 .card-image {
