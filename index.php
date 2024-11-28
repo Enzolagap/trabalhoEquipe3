@@ -75,11 +75,15 @@ function getCardColor($coletor)
 
     <!-- Container para exibir o cabeçalho -->
     <div class="container-header">
+        <div class="logo">
+            <img src='http://localhost/trabalhoEquipe3-main/Imagens/Logo.png' width='300px'>
+        </div>
 
-        <a href='logout.php'><button type='button'>Sair</button></a>
-
+        <div class="access-control">
+            <a href='logout.php'>Sair</a>
+            <h2>Olá, Conteudista.</h2>
+        </div>
     </div>
-
 
     <!-- Container para exibir os filtros -->
     <div class="container-nav">

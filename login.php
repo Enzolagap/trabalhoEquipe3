@@ -3,12 +3,12 @@
 if (isset($_POST['botao'])) {
     require_once __DIR__ . "/vendor/autoload.php";
     require_once __DIR__ . "../validacao.php";
-
 }
 ?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,13 +16,14 @@ if (isset($_POST['botao'])) {
     <title>Tela de Login</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
     <div class="container-login">
         <!-- Formulário -->
         <div class="form-login">
 
-        <img src='http://localhost/trabalhoEquipe3-main/Imagens/Logo.png' width='300px'>
+            <img src='http://localhost/trabalhoEquipe3-main/Imagens/Logo.png' width='300px'>
 
             <form action="validacao.php" method="POST">
                 <br>
@@ -32,11 +33,7 @@ if (isset($_POST['botao'])) {
                 <input name="senha" type="password" placeholder="Insira sua senha" required>
                 <button type="submit" name="botao">Entrar</button>
                 <br>
-                <a href='indexVisitante.php'><button type='button'>Continuar como visitante</button></a>
-                <br>
-                <div class="criar-conta">
-                    Não tem uma conta? <a href="formCriarUsuario.php">Criar Conta</a>
-                </div>
+                <a href='indexVisitante.php'><button type='button'>Voltar a tela inicial</button></a>
             </form>
         </div>
 
@@ -50,4 +47,5 @@ if (isset($_POST['botao'])) {
     </div>
 
 </body>
+
 </html>

@@ -9,16 +9,80 @@ html,body {
     height: 100%;
 }
 
+/* Estilo do cabeçalho */
+.container-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}
+
+.logo img {
+    width: 300px;
+    margin-top: 20px;
+    margin-left: 50px;
+}
+
+.access-control {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    margin-right: 50px;
+}
+
+.access-control .login-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #359b47;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.access-control h2{
+    padding: 10px;
+    margin-left: 20px;
+    background-color: #359b47;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.access-control a {
+    text-decoration: none;
+    color: black;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.access-control a:hover {
+    text-decoration: underline;
+}
+
+.access-control .login-button:hover {
+    background-color: #007722;
+}
+
 /* Estilo da barra de navegação */
 .container-nav {
     display: grid;
     grid-template-columns: 1fr 2fr;
     gap: 20px;
-    padding: 20px;
+    border-top: 3px solid #359b47;
 }
 
 .container-nav h1{
     text-align: center;
+    font-size: 40px;
     font-weight: normal;
 }
 
@@ -331,20 +395,6 @@ html,body {
 
 .form-login button:hover {
     background-color: #007722;
-}
-  
-.criar-conta {
-    margin-top: 20px;
-    text-align: center;
-}
-
-.criar-conta a {
-    text-decoration: none;
-    color: #009933;
-}
-  
-.criar-conta a:hover {
-    text-decoration: underline;
 }
 
 /* Lado direito: imagem e texto */

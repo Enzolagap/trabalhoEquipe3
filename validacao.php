@@ -21,7 +21,7 @@ if (isset($_POST['botao'])) {
         // Inicia uma sessão e redireciona para a área protegida
         session_start();
         $_SESSION['id'] = $usuario->getIdUsuario();
-        header("Location: index.php");
+        header("location: index.php");
         exit;
     } else {
         // Senha inválida
@@ -29,4 +29,3 @@ if (isset($_POST['botao'])) {
         exit;
     }
 }
-?>

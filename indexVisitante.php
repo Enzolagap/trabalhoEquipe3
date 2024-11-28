@@ -20,6 +20,12 @@ if (!in_array($order, ['ASC', 'DESC'])) {
     $order = 'ASC';
 }
 
+// Filtro por coletor
+if (isset($_GET['coletor']) && !empty($_GET['coletor'])) {
+    $coletor = $_GET['coletor'];
+    $residuos = array_filter($residuos, fn($residuo) => $residuo->getColetor() === $coletor);
+}
+
 // Ordena os resíduos com base no nome
 if ($order === 'ASC') {
     usort($residuos, fn($a, $b) => strcmp($a->getNome(), $b->getNome()));
@@ -62,8 +68,13 @@ function getCardColor($coletor)
 
     <!-- Container para exibir o cabeçalho -->
     <div class="container-header">
-        <a href='login.php'><button type='button'>Entrar</button></a>
-        <a href='formCriarUsuario.php'><button type='button'>Criar conta</button></a>
+        <div class="logo">
+            <img src='http://localhost/trabalhoEquipe3-main/Imagens/Logo.png' width='300px'>
+        </div>
+
+        <div class="access-control">
+            <a href='login.php'><button type='button' class="login-button">Entrar</button></a>
+        </div>
     </div>
 
 
@@ -73,16 +84,21 @@ function getCardColor($coletor)
         <h1>Resíduos</h1>
 
         <div class="container-filters">
-            <!-- Link para alternar ordenação por coletor -->
+            <!-- Exibe o link de limpar apenas se o filtro de coletor estiver ativo -->
+            <?php if (isset($_GET['coletor']) && !empty($_GET['coletor'])): ?>
+                <a href="index.php" class="clear-coletor">Limpar Filtro</a>
+            <?php endif; ?>
+
+            <!-- Filtro por Coletor -->
             <div class="order-coletor">
                 <div class="select-container">
-                    <select>
-                        <option value="default" selected disabled>Filtrar por coletor</option>
-                        <option value="Orgânico">Orgânico</option>
-                        <option value="Papel">Papel</option>
-                        <option value="Metal">Metal</option>
-                        <option value="Vidro">Vidro</option>
-                        <option value="Plástico">Plástico</option>
+                    <select onchange="window.location.href='?coletor=' + this.value + '&order=<?= $order ?>'">
+                        <option value="" selected disabled>Filtrar por coletor</option>
+                        <option value="Orgânico" <?= isset($_GET['coletor']) && $_GET['coletor'] == 'Orgânico' ? 'selected' : '' ?>>Orgânico</option>
+                        <option value="Papel" <?= isset($_GET['coletor']) && $_GET['coletor'] == 'Papel' ? 'selected' : '' ?>>Papel</option>
+                        <option value="Metal" <?= isset($_GET['coletor']) && $_GET['coletor'] == 'Metal' ? 'selected' : '' ?>>Metal</option>
+                        <option value="Vidro" <?= isset($_GET['coletor']) && $_GET['coletor'] == 'Vidro' ? 'selected' : '' ?>>Vidro</option>
+                        <option value="Plástico" <?= isset($_GET['coletor']) && $_GET['coletor'] == 'Plástico' ? 'selected' : '' ?>>Plástico</option>
                     </select>
                     <img src='http://localhost/trabalhoEquipe3-main/Imagens/filtroColetor.png'>
                 </div>

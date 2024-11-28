@@ -24,7 +24,7 @@ if (isset($_POST['botao'])) {
     // Obtém os dados do formulário
     $nome = $_POST['nome'];
     $descricao = $_POST['descricao'];
-    $coletor = $_POST['coletor'];
+    $coletor = null;
     $foto = null; // Inicializa como null para garantir que não seja sobrescrito acidentalmente
 
     // Se uma nova foto foi enviada, pega o conteúdo da foto
@@ -35,7 +35,11 @@ if (isset($_POST['botao'])) {
     // Atualiza os dados do resíduo com as novas informações
     $residuo->setNome($nome);
     $residuo->setDescricao($descricao);
-    $residuo->setColetor($coletor);
+
+    // Se um novo coletor foi fornecido, atualiza o coletor
+    if ($coletor !== null) {
+        $residuo->setColetor($coletor);
+    }
 
     // Se uma nova foto foi carregada, atualiza a foto
     if ($foto !== null) {
