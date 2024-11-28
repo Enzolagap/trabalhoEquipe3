@@ -80,8 +80,8 @@ function getCardColor($coletor)
         </div>
 
         <div class="access-control">
-            <h2>Olá, Conteudista.</h2>
             <a href='logout.php'>Sair</a>
+            <h2>Olá, Conteudista.</h2>
         </div>
     </div>
 
@@ -90,7 +90,7 @@ function getCardColor($coletor)
 
         <h1>Resíduos</h1>
 
-        <div class="container-filters"> 
+        <div class="container-filters">
             <!-- Exibe o link de limpar apenas se o filtro de coletor estiver ativo -->
             <?php if (isset($_GET['coletor']) && !empty($_GET['coletor'])): ?>
                 <a href="index.php" class="clear-coletor">Limpar Filtro</a>

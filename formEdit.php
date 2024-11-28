@@ -1,6 +1,6 @@
 <?php
 
-$tipos_permitidos = ['image/jpg', 'image/jpeg', 'image/png', 'image/webp', 'image/jfif', 'image/tiff','image/psd','image/bmp'];
+$tipos_permitidos = ['image/jpg', 'image/jpeg', 'image/png', 'image/webp', 'image/jfif', 'image/tiff', 'image/psd', 'image/bmp'];
 // Verifica se o ID do resíduo foi passado na URL
 if (isset($_GET['idResiduo'])) {
     require_once __DIR__ . "/vendor/autoload.php";
@@ -40,7 +40,6 @@ if (isset($_POST['botao'])) {
             header("location: formEdit.php?idResiduo=" . $_GET['idResiduo'] . "&erro=tipo");
             exit;
         }
-        
     }
 
     // Atualiza os dados do resíduo com as novas informações
@@ -79,42 +78,41 @@ if (isset($_POST['botao'])) {
 </head>
 
 <body>
-
-<div class='container'>
-<div class="form-cadastro">
-        <h1 class="titulo">Editar Resíduo</h1>
-        <form action="formEdit.php?idResiduo=<?php echo $_GET['idResiduo']; ?>" method="POST" enctype="multipart/form-data" onsubmit="return validarFormulario();">
-            <label for="nome">Nome: </label>
-            <input name="nome" value="<?php echo htmlspecialchars($residuo->getNome()); ?>" type="text" required>
-            <label for="descricao">Descrição: </label>
-            <input name="descricao" value="<?php echo htmlspecialchars($residuo->getDescricao()); ?>" type="text" required>
-            <label for="coletor">Coletor: </label>
-            <div class="select-coletor">
-                <select name="coletor" type="text" required>
-                    <option selected><?php echo htmlspecialchars($residuo->getColetor()); ?></option>
-                    <?php if ($residuo->getColetor() !== "Orgânico") { ?><option value="Orgânico">Orgânico</option><?php } ?>
-                    <?php if ($residuo->getColetor() !== "Papel") { ?><option value="Papel">Papel</option><?php } ?>
-                    <?php if ($residuo->getColetor() !== "Metal") { ?><option value="Metal">Metal</option><?php } ?>
-                    <?php if ($residuo->getColetor() !== "Vidro") { ?><option value="Vidro">Vidro</option><?php } ?>
-                    <?php if ($residuo->getColetor() !== "Plástico") { ?><option value="Plástico">Plástico</option><?php } ?>
-                </select>
-            </div>
-            <label for="foto">Foto: </label>
-            <input type="file" name="foto" accept="image/*">
-            <br>
-            <!-- ID do resíduo passado como campo oculto -->
-            <input name="idResiduo" value="<?php echo $residuo->getIdResiduo(); ?>" type="hidden">
-            <div class="botoes">
-                <button type="submit" name="botao">Salvar</button>
+    <div class='container'>
+        <div class="form-cadastro">
+            <h1 class="titulo">Editar Resíduo</h1>
+            <form action="formEdit.php?idResiduo=<?php echo $_GET['idResiduo']; ?>" method="POST" enctype="multipart/form-data" onsubmit="return validarFormulario();">
+                <label for="nome">Nome: </label>
+                <input name="nome" value="<?php echo htmlspecialchars($residuo->getNome()); ?>" type="text" required>
+                <label for="descricao">Descrição: </label>
+                <input name="descricao" value="<?php echo htmlspecialchars($residuo->getDescricao()); ?>" type="text" required>
+                <label for="coletor">Coletor: </label>
+                <div class="select-coletor">
+                    <select name="coletor" type="text" required>
+                        <option selected><?php echo htmlspecialchars($residuo->getColetor()); ?></option>
+                        <?php if ($residuo->getColetor() !== "Orgânico") { ?><option value="Orgânico">Orgânico</option><?php } ?>
+                        <?php if ($residuo->getColetor() !== "Papel") { ?><option value="Papel">Papel</option><?php } ?>
+                        <?php if ($residuo->getColetor() !== "Metal") { ?><option value="Metal">Metal</option><?php } ?>
+                        <?php if ($residuo->getColetor() !== "Vidro") { ?><option value="Vidro">Vidro</option><?php } ?>
+                        <?php if ($residuo->getColetor() !== "Plástico") { ?><option value="Plástico">Plástico</option><?php } ?>
+                    </select>
+                </div>
+                <label for="id">Foto: </label>
+                <input type="file" name="foto" accept="image/*">
                 <br>
-                <a href="index.php"><button type="button">Voltar</button></a>
-            </div>
-        </form>
+                <!-- ID do resíduo passado como campo oculto -->
+                <input name="idResiduo" value="<?php echo $residuo->getIdResiduo(); ?>" type="hidden">
+                <div class="botoes">
+                    <button type="submit" name="botao">Salvar</button>
+                    <br>
+                    <a href="index.php"><button type="button">Voltar</button></a>
+                </div>
+            </form>
+        </div>
+
+
     </div>
 
-
-</div>
-   
 
 
 
