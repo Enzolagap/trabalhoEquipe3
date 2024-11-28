@@ -68,7 +68,8 @@ if (isset($_POST['botao'])) {
 
 <body>
 
-    <div class="form-cadastro">
+<div class='container'>
+<div class="form-cadastro">
         <h1 class="titulo">Editar Resíduo</h1>
 
         <form action="formEdit.php?idResiduo=<?php echo $_GET['idResiduo']; ?>" method="POST" enctype="multipart/form-data">
@@ -79,7 +80,7 @@ if (isset($_POST['botao'])) {
             <label for="coletor">Coletor: </label>
             <div class="select-coletor">
                 <select name="coletor" type="text" required>
-                    <option value="default" selected disabled><?php echo htmlspecialchars($residuo->getColetor()); ?></option>
+                    <option selected><?php echo htmlspecialchars($residuo->getColetor()); ?></option>
                     <?php if ($residuo->getColetor() !== "Orgânico") { ?><option value="Orgânico">Orgânico</option><?php } ?>
                     <?php if ($residuo->getColetor() !== "Papel") { ?><option value="Papel">Papel</option><?php } ?>
                     <?php if ($residuo->getColetor() !== "Metal") { ?><option value="Metal">Metal</option><?php } ?>
@@ -100,6 +101,9 @@ if (isset($_POST['botao'])) {
         </form>
     </div>
 
+
+</div>
+   
 
 
 

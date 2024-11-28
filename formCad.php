@@ -31,7 +31,9 @@ if (isset($_POST['botao'])) {
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="form-cadastro">
+
+<div class='container'>
+<div class="form-cadastro">
         <h1 class="titulo">Cadastrar Resíduo</h1>
 
         <form action="formCad.php" method="POST" enctype="multipart/form-data">
@@ -60,5 +62,8 @@ if (isset($_POST['botao'])) {
             </div>
         </form>
     </div>
+
+
+</div>
 </body>
 </html>

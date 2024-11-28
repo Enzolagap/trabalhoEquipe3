@@ -80,8 +80,8 @@ function getCardColor($coletor)
         </div>
 
         <div class="access-control">
-            <a href='logout.php'>Sair</a>
             <h2>Olá, Conteudista.</h2>
+            <a href='logout.php'>Sair</a>
         </div>
     </div>
 

@@ -73,7 +73,7 @@ function getCardColor($coletor)
         </div>
 
         <div class="access-control">
-            <a href='login.php'><button type='button' class="login-button">Entrar</button></a>
+            <a href='login.php'><button type='button' class="login-button">Gerenciar</button></a>
         </div>
     </div>
 
