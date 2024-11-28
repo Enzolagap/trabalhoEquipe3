@@ -531,7 +531,7 @@ input[type="file"] {
 }
 
 /* Estilo para campos de texto, email e senha */
-input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus{
+input[type="text"]:focus, input[type="password"]:focus{
     border-color: #007722;
     outline: none;
 }

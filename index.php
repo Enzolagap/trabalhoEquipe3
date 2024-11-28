@@ -114,7 +114,7 @@ function getCardColor($coletor)
 
             <!-- Link para alternar ordenação alfabeticamente -->
             <div class="order-name">
-                <a href="?order=<?= $nextOrder; ?>"><img src='http://localhost/trabalhoEquipe3-main/Imagens/filtroAlfa.png'><?= $nextOrderText; ?></a>
+                <a href="?coletor=<?= $_GET['coletor'] ?? '' ?>&order=<?= $nextOrder; ?>"><img src='http://localhost/trabalhoEquipe3-main/Imagens/filtroAlfa.png'><?= $nextOrderText; ?></a>
             </div>
 
             <!-- Formulário de pesquisa -->

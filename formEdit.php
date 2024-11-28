@@ -24,7 +24,7 @@ if (isset($_POST['botao'])) {
     // Obtém os dados do formulário
     $nome = $_POST['nome'];
     $descricao = $_POST['descricao'];
-    $coletor = null;
+    $coletor = $_POST['coletor'] ?? null; // Captura o valor do coletor enviado pelo formulário
     $foto = null; // Inicializa como null para garantir que não seja sobrescrito acidentalmente
 
     // Se uma nova foto foi enviada, pega o conteúdo da foto
@@ -93,7 +93,7 @@ if (isset($_POST['botao'])) {
             <!-- ID do resíduo passado como campo oculto -->
             <input name="idResiduo" value="<?php echo $residuo->getIdResiduo(); ?>" type="hidden">
             <div class="botoes">
-                <button type="submit" name="botao">Salvar</button>
+                <button type="submit" name="botao" onclick="alert('Resíduo editado com sucesso.'); return true;">Salvar</button>
                 <br>
                 <a href="index.php"><button type="button">Voltar</button></a>
             </div>

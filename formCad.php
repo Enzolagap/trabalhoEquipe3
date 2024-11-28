@@ -16,7 +16,7 @@ if (isset($_POST['botao'])) {
     $residuo->save();
     
     // Após salvar, redireciona para a página de listagem
-    header("location: index.php");
+    header("location: formCad.php");
     exit;
 }
 ?>
@@ -50,11 +50,11 @@ if (isset($_POST['botao'])) {
                     <option value="Vidro">Vidro</option>
                 </select>
             </div>
-            <label for="foto">Foto: </label>
+            <label for="foto">Foto: (resolução recomendada: 412x412)</label>
             <input type="file" name="foto" id="imageInput" accept="image/*" required>
             <br>
             <div class="botoes">
-                <button type="submit" name="botao">Cadastrar</button>
+                <button type="submit" name="botao" onclick="alert('Resíduo cadastrado com sucesso.'); return true;">Cadastrar</button>
                 <br>
                 <a href="index.php"><button type="button">Voltar</button></a>
             </div>

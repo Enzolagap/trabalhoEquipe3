@@ -86,7 +86,7 @@ function getCardColor($coletor)
         <div class="container-filters">
             <!-- Exibe o link de limpar apenas se o filtro de coletor estiver ativo -->
             <?php if (isset($_GET['coletor']) && !empty($_GET['coletor'])): ?>
-                <a href="index.php" class="clear-coletor">Limpar Filtro</a>
+                <a href="indexVisitante.php" class="clear-coletor">Limpar Filtro</a>
             <?php endif; ?>
 
             <!-- Filtro por Coletor -->
@@ -107,7 +107,7 @@ function getCardColor($coletor)
 
             <!-- Link para alternar ordenação alfabeticamente -->
             <div class="order-name">
-                <a href="?order=<?= $nextOrder; ?>"><img src='http://localhost/trabalhoEquipe3-main/Imagens/filtroAlfa.png'><?= $nextOrderText; ?></a>
+                <a href="?coletor=<?= $_GET['coletor'] ?? '' ?>&order=<?= $nextOrder; ?>"><img src='http://localhost/trabalhoEquipe3-main/Imagens/filtroAlfa.png'><?= $nextOrderText; ?></a>
             </div>
 
             <!-- Formulário de pesquisa -->
