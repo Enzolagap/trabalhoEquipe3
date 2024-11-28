@@ -4,10 +4,9 @@ require_once __DIR__ . "/vendor/autoload.php";
 // Verifica se há uma pesquisa sendo feita
 if (isset($_POST['search'])) {
     $searchTerm = $_POST['search'];
-    
+
     // Filtra os resíduos com base no nome
     $residuos = Residuo::findnome($searchTerm);
-
 } else {
     // Se não houver filtro, exibe todos os resíduos
     $residuos = Residuo::findall();
@@ -30,16 +29,18 @@ if ($order === 'ASC') {
 
 // Alterna o tipo de ordenação para o próximo clique
 $nextOrder = $order === 'ASC' ? 'DESC' : 'ASC';
+$nextOrderText = $order === 'ASC' ? 'Z a A' : 'A a Z'; // Alterna o texto do link de ordenação
 
 // Função para obter a cor do card
-function getCardColor($coletor) {
+function getCardColor($coletor)
+{
     $colors = [
         'Orgânico' => 'marrom',
         'Papel' => 'azul',
         'Metal' => 'amarelo',
         'Vidro' => 'verde',
-        'Plastico' => 'vermelho',
-        
+        'Plástico' => 'vermelho',
+
     ];
     return $colors[$coletor];
 }
@@ -47,6 +48,7 @@ function getCardColor($coletor) {
 
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -55,89 +57,86 @@ function getCardColor($coletor) {
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
 </head>
+
 <body>
 
-<!-- Container para exibir o cabeçalho -->
-<div class="container-header">
-    <a href='login.php'><button type='button'>Entrar</button></a>
-    <a href='formCriarUsuario.php'><button type='button'>Criar conta</button></a>
-</div>
+    <!-- Container para exibir o cabeçalho -->
+    <div class="container-header">
+        <a href='login.php'><button type='button'>Entrar</button></a>
+        <a href='formCriarUsuario.php'><button type='button'>Criar conta</button></a>
+    </div>
 
 
-<!-- Container para exibir os filtros -->
-<div class="container-nav">
+    <!-- Container para exibir os filtros -->
+    <div class="container-nav">
 
-    <h1>Resíduos</h1>
+        <h1>Resíduos</h1>
 
-    <div class="container-filters">
-        <!-- Link para alternar ordenação por coletor -->
-        <div class="order-coletor">
-            <div class="select-container">
-                <select>
-                    <option value="default" selected disabled>Filtrar por coletor</option>
-                    <option value="Orgânico">Orgânico</option>
-                    <option value="Papel">Papel</option>
-                    <option value="Metal">Metal</option>
-                    <option value="Vidro">Vidro</option>
-                    <option value="Plástico">Plástico</option>
-                </select>
-                <img src='http://localhost/trabalhoEquipe3-main/Imagens/filtroColetor.png'>
+        <div class="container-filters">
+            <!-- Link para alternar ordenação por coletor -->
+            <div class="order-coletor">
+                <div class="select-container">
+                    <select>
+                        <option value="default" selected disabled>Filtrar por coletor</option>
+                        <option value="Orgânico">Orgânico</option>
+                        <option value="Papel">Papel</option>
+                        <option value="Metal">Metal</option>
+                        <option value="Vidro">Vidro</option>
+                        <option value="Plástico">Plástico</option>
+                    </select>
+                    <img src='http://localhost/trabalhoEquipe3-main/Imagens/filtroColetor.png'>
+                </div>
             </div>
-        </div>
 
 
-        <!-- Link para alternar ordenação alfabeticamente -->
-        <div class="order-name">
-            <a href="?order=<?= $nextOrder; ?>"><img src='http://localhost/trabalhoEquipe3-main/Imagens/filtroAlfa.png'> A a Z</a>
+            <!-- Link para alternar ordenação alfabeticamente -->
+            <div class="order-name">
+                <a href="?order=<?= $nextOrder; ?>"><img src='http://localhost/trabalhoEquipe3-main/Imagens/filtroAlfa.png'><?= $nextOrderText; ?></a>
+            </div>
+
+            <!-- Formulário de pesquisa -->
+            <form action="" method="post">
+                <input type="text" name="search" placeholder="🔍︎ Pesquisar">
+                <button type="submit">Pesquisar</button>
+            </form>
         </div>
-        
-        <!-- Formulário de pesquisa -->
-        <form action="" method="post">
-        <input type="text" name="search" placeholder="🔍︎ Pesquisar">
-        <button type="submit">Pesquisar</button>
-        </form>
+
     </div>
 
-</div>
 
+    <!-- Container para exibir os resíduos -->
+    <div class="container-cards">
 
-<!-- Container para exibir os resíduos -->
-<div class="container-cards">
-    
-    <!-- Exibe os resíduos como cartões -->
-    <?php
-    foreach ($residuos as $residuo) {
-        $colorClass = getCardColor($residuo->getColetor());
-        echo "<div class='card $colorClass'>";
-        if ($residuo->getFoto() !== null) {
+        <div class="card-add">
+            <a href='login.php' onclick="alert('Você precisa efetuar o login para adicionar um resíduo!'); return true;" class="cadastrar-link">
+                <div class="add-icon">+</div>
+                <h2>Cadastrar Resíduo</h2>
+            </a>
+        </div>
+        <!-- Exibe os resíduos como cartões -->
+        <?php
+        foreach ($residuos as $residuo) {
+            $colorClass = getCardColor($residuo->getColetor());
+            echo "<div class='card $colorClass'>";
             echo "<img src='data:image/jpeg;base64," . base64_encode($residuo->getFoto()) . "' alt='Imagem do Resíduo' class='card-image'>";
-        } else {
-            echo "<td>Sem Foto</td>";
-        }
-        echo "<div class='card-content'>";
-        echo "<p>{$residuo->getNome()}</p>";
-        echo "<p>Coletor: {$residuo->getColetor()}</p>";
-        $descricao = $residuo->getDescricao();
-        if (strlen($descricao) > 30) {
-            $descricaoCortada = substr($descricao, 0, 30) . "...";
-            echo "<p class='descricao' onclick='toggleDescricao(this, event)' data-full-text='{$descricao}.'>{$descricaoCortada}</p>";
-        } else {
-            echo "<p class='descricao'>{$descricao}.</p>";
-        }
-        echo "</div>";
-     
-        echo "</div>";
-    }
-    ?>
+            echo "<div class='card-content'>";
+            echo "<p>{$residuo->getNome()}</p>";
+            echo "<p>Coletor: {$residuo->getColetor()}</p>";
+            $descricao = $residuo->getDescricao();
+            if (strlen($descricao) > 30) {
+                $descricaoCortada = substr($descricao, 0, 30) . "...";
+                echo "<p class='descricao' onclick='toggleDescricao(this, event)' data-full-text='{$descricao}.'>{$descricaoCortada}</p>";
+            } else {
+                echo "<p>{$descricao}.</p>";
+            }
+            echo "</div>";
 
-    <div class="card-add">
-        <a href='login.php' onclick="alert('Você precisa efetuar o login para adicionar um resíduo!'); return true;" class="cadastrar-link">
-            <div class="add-icon">+</div>
-            <h2>Cadastrar Resíduo</h2>
-        </a>
+            echo "</div>";
+        }
+        ?>
+
     </div>
-
-</div>
 
 </body>
+
 </html>

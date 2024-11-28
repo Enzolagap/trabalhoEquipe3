@@ -62,6 +62,19 @@ html,body {
     font-size: 16px;
 }
 
+.clear-coletor {
+    display: inline-block;
+    margin-left: 10px;
+    color: #FF5733;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.clear-coletor:hover {
+    text-decoration: underline;
+}
+
 /* Ordenação alfabetica */
 .order-name {
     display: flex;
@@ -135,9 +148,9 @@ html,body {
 /* Estilo do conteúdo principal */
 .container-cards {
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
     gap: 20px;
-    padding: 50px;
 }
 
 /* Estilo dos cartões */
@@ -244,10 +257,6 @@ html,body {
 
 .card.vermelho {
     background-color: #dd2d26;
-}
-
-.card.default {
-    background-color: #707070;
 }
 
 /* Estilo das ações */
