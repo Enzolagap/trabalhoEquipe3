@@ -1,4 +1,6 @@
 <?php
+
+$tipos_permitidos = ['image/jpg', 'image/jpeg', 'image/png', 'image/webp', 'image/jfif', 'image/tiff','image/psd','image/bmp'];
 // Verifica se o ID do resíduo foi passado na URL
 if (isset($_GET['idResiduo'])) {
     require_once __DIR__ . "/vendor/autoload.php";
@@ -29,7 +31,16 @@ if (isset($_POST['botao'])) {
 
     // Se uma nova foto foi enviada, pega o conteúdo da foto
     if (isset($_FILES['foto']) && $_FILES['foto']['error'] === UPLOAD_ERR_OK) {
-        $foto = file_get_contents($_FILES['foto']['tmp_name']);
+        $tipo_arquivo = mime_content_type($_FILES['foto']['tmp_name']);
+
+        if (in_array($tipo_arquivo, $tipos_permitidos)) {
+            $foto = file_get_contents($_FILES['foto']['tmp_name']);
+        } else {
+            // Redireciona de volta para o formulário caso o tipo de arquivo não seja permitido
+            header("location: formEdit.php?idResiduo=" . $_GET['idResiduo'] . "&erro=tipo");
+            exit;
+        }
+        
     }
 
     // Atualiza os dados do resíduo com as novas informações
@@ -64,6 +75,7 @@ if (isset($_POST['botao'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edita Resíduo</title>
     <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
 </head>
 
 <body>
@@ -71,8 +83,7 @@ if (isset($_POST['botao'])) {
 <div class='container'>
 <div class="form-cadastro">
         <h1 class="titulo">Editar Resíduo</h1>
-
-        <form action="formEdit.php?idResiduo=<?php echo $_GET['idResiduo']; ?>" method="POST" enctype="multipart/form-data">
+        <form action="formEdit.php?idResiduo=<?php echo $_GET['idResiduo']; ?>" method="POST" enctype="multipart/form-data" onsubmit="return validarFormulario();">
             <label for="nome">Nome: </label>
             <input name="nome" value="<?php echo htmlspecialchars($residuo->getNome()); ?>" type="text" required>
             <label for="descricao">Descrição: </label>
@@ -94,7 +105,7 @@ if (isset($_POST['botao'])) {
             <!-- ID do resíduo passado como campo oculto -->
             <input name="idResiduo" value="<?php echo $residuo->getIdResiduo(); ?>" type="hidden">
             <div class="botoes">
-                <button type="submit" name="botao" onclick="alert('Resíduo editado com sucesso.'); return true;">Salvar</button>
+                <button type="submit" name="botao">Salvar</button>
                 <br>
                 <a href="index.php"><button type="button">Voltar</button></a>
             </div>
