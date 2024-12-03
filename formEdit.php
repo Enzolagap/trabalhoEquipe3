@@ -78,9 +78,8 @@ if (isset($_POST['botao'])) {
 </head>
 
 <script>
-    // Função que será chamada na submissão do formulário
-    function validarFormulario(event) {
-        var foto = document.forms["formEdit"]["foto"].files[0]; // Corrigido para acessar o arquivo corretamente
+    function validarFoto(event) {
+        var foto = event.target.files[0]; // Obtém o arquivo enviado
         var tiposPermitidos = ['image/jpg', 'image/jpeg', 'image/png', 'image/webp', 'image/jfif', 'image/tiff', 'image/psd', 'image/bmp'];
 
         // Verifica se há uma foto e se o tipo do arquivo está correto
@@ -92,14 +91,34 @@ if (isset($_POST['botao'])) {
             // Se o tipo do arquivo não for permitido
             if (!tiposPermitidos.includes(tipoArquivo)) {
                 alert('Tipo de imagem inválido. Por favor, envie uma imagem válida (JPG, PNG, WebP, etc.).');
-                event.preventDefault(); // Impede o envio do formulário
+                event.target.value = ""; // Limpa o campo de imagem
+                return false; // Impede o envio do formulário
+            }
+        }
+
+        return true; // Permite o envio do formulário
+    }
+
+    function validarFormularioEdicao(event) {
+
+        var foto = document.forms["formEdit"]["foto"].files[0]; // Acessa o arquivo de imagem enviado
+        var tiposPermitidos = ['image/jpg', 'image/jpeg', 'image/png', 'image/webp', 'image/jfif', 'image/tiff', 'image/psd', 'image/bmp'];
+
+        // Verifica se a foto é válida
+        if (foto) {
+            var tipoArquivo = foto.type;
+
+            if (!tiposPermitidos.includes(tipoArquivo)) {
+                event.preventDefault(); // Impede o envio do formulário, aguardando validação
+                alert('Tipo de imagem inválido. Por favor, envie uma imagem válida (JPG, PNG, WebP, etc.).');
                 return false; // Impede o envio do formulário
             }
         }
 
         // Se tudo estiver correto, envia o formulário
         alert('Resíduo editado com sucesso!');
-        return true; // Permite o envio do formulário
+        document.forms["formEdit"].submit(); // Envia o formulário
+        return true;
     }
 </script>
 
@@ -108,12 +127,7 @@ if (isset($_POST['botao'])) {
         <div class="form-cadastro">
             <h1 class="titulo">Editar Resíduo</h1>
 
-            <!-- Verifica se existe erro de tipo de arquivo e exibe uma mensagem -->
-            <?php if (isset($_GET['erro']) && $_GET['erro'] == 'tipo'): ?>
-                <p style="color: red;">Erro: Tipo de arquivo inválido. Tente novamente com um formato permitido (JPG, PNG, etc.).</p>
-            <?php endif; ?>
-
-            <form name="formEdit" action="formEdit.php?idResiduo=<?php echo htmlspecialchars($_GET['idResiduo']); ?>" method="POST" enctype="multipart/form-data" onsubmit="return validarFormulario(event)">
+            <form name="formEdit" action="formEdit.php?idResiduo=<?php echo htmlspecialchars($_GET['idResiduo']); ?>" method="POST" enctype="multipart/form-data" onsubmit="return validarFormularioEdicao(event)">
                 <label for="nome">Nome: </label>
                 <input name="nome" value="<?php echo htmlspecialchars($residuo->getNome()); ?>" type="text" required>
 
@@ -136,7 +150,7 @@ if (isset($_POST['botao'])) {
                 </div>
 
                 <label for="foto">Foto: </label>
-                <input type="file" name="foto" id="foto" accept="image/*">
+                <input type="file" name="foto" id="foto" accept="image/*" onchange="validarFoto(event)">
                 <br>
 
                 <!-- ID do resíduo passado como campo oculto -->
@@ -150,6 +164,7 @@ if (isset($_POST['botao'])) {
             </form>
         </div>
     </div>
+
 </body>
 
 </html>

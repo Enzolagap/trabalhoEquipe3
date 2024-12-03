@@ -11,4 +11,3 @@ function toggleDescricao(element, event) {
         card.style.height = ""; // Remove restrições de altura
     }
 }
-
